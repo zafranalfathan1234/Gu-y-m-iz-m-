@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Guóyǔměizìmǔ Translator</title>
+</head>
+
+<body>
+
+<h2>Guóyǔměizìmǔ translator</h2>
+
+<textarea id="input" rows="6" cols="50"></textarea>
+<br><br>
+
+<button onclick="latinTotheGuóyǔměizìmǔ()">Latin → Guóyǔměizìmǔ</button>
+<button onclick="GuóyǔměizìmǔToLatin()">Guóyǔměizìmǔ → Latin</button>
+
+<p id="output"></p>
+
+<script>
+
+const map = {
+a:" 艾", b:"拔", c:"菜", d:"道", e:"诶", f:"道", g:"高", h:"好",
+i:"伊", j:"京", k:"空", l:"亮", m:"川", n:"南", o:"欧", p:"旁",
+q:"口", r:"热", s:"商", t:"十", u:"友", v:"维", w:"屋", x:"西", y:"鸡", z:"早"
+
+};
+
+function latinTotheGuóyǔměizìmǔ(){
+let text = document.getElementById("input").value.toLowerCase();
+let result = "";
+
+for(let char of text){
+result += map[char] || char;
+}
+
+document.getElementById("output").innerText = result;
+}
+
+function GuóyǔměizìmǔToLatin(){
+let reverse = {};
+for(let key in map){
+reverse[map[key]] = key;
+}
+
+let text = document.getElementById("input").value.toLowerCase();
+let result = "";
+
+for(let char of text){
+result += reverse[char] || char;
+}
+
+document.getElementById("output").innerText = result;
+}
+
+</script>
+
+</body>
+</html>
